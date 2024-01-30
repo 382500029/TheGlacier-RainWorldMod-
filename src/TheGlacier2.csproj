@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    
+    <PropertyGroup>
+        <TargetFramework>net48</TargetFramework>
+        <LangVersion>11</LangVersion>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
+    
+    <ItemGroup>
+        <Reference Include="../lib/*.dll">
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Compile Remove="Game\MySlideshows.cs" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Reference Include="ImprovedInput">
+        <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\312520\2944727862\plugins\ImprovedInput.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    
+    <Target Name="GenerateMod" AfterTargets="PostBuildEvent">
+		<ItemGroup>
+			<RemovePlugins Include="../mod/plugins/*.dll" />
+		</ItemGroup>
+		<ItemGroup>
+			<CopyPlugins Include="$(TargetPath)" />
+		</ItemGroup>
+		
+        <Delete Files="@(RemovePlugins)" />
+        <Copy SourceFiles="@(CopyPlugins)" DestinationFolder="../mod/plugins/" />
+    </Target>
+    
+</Project>
