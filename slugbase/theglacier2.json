@@ -1,0 +1,67 @@
+{
+	"id": "TheGlacier2",
+	"name": "The Glacier",
+	"description": "A messenger from afar,master of flexible control over ice.<LINE>Exiling in this perilous world，Where will tomorrow be...?",
+	"features": {
+		"color": "7780AD",
+		"custom_colors": [
+			{
+				"name": "Body",
+				"story": "ffffff"
+			},
+			{
+				"name": "Eyes",
+				"story": "010101"
+			}
+		],
+		"lung_capacity" : 5,
+		"weight": 0.85,
+		"walk_speed": 1.5,
+		"tunnel_speed": 1.4,
+		"climb_speed": 1.4,
+		"throw_skill": 1,
+		"food_min": 7,
+		"food_max": 10,
+		"the_mark": true,
+		"karma": 1,
+		"karma_cap": 4,
+		"start_room": "LF_S05",
+		"world_state": "Gourmand",
+		"diet": {
+			"base": "Red"
+		},
+		"alignments": {
+			"All": {
+				"like": -0.35,
+				"locked": false
+			},
+			"Scavengers": {
+				"like": 0.2,
+				"locked": false
+			},
+			"Lizards": {
+				"like": -0.35,
+				"locked": false
+			},
+			"Cicadas": {
+				"like": -0.35,
+				"locked": false
+			},
+			"GarbageWorms": {
+				"like": -0.35,
+				"locked": false
+			},
+			"Deer": {
+				"like": -0.35,
+				"locked": false
+			},
+			"Jetfish": {
+				"like": -0.35,
+				"locked": false
+			}
+		},
+		"select_menu_scene": "Slugcat_TheGlacier2",
+		"select_menu_scene_ascended": "Ghost_TheGlacier2",
+		"sleep_scene": "Sleep_TheGlacier2"
+	}
+}
