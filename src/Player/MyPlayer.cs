@@ -49,6 +49,13 @@ namespace TheGlacier2
 
         private static void SaveState_LoadGame(On.SaveState.orig_LoadGame orig, SaveState saveState, string str, RainWorldGame game)
         {
+            /******************************24_2_16 保存bug**********************************/
+            if (MyOption.Instance.OpCheckBoxSaveIceData_conf.Value == false)
+            {
+                orig.Invoke(saveState, str, game);
+                return;
+            }
+            //]]
             orig.Invoke(saveState, str, game);
             string[] array = Regex.Split(str, "<svA>");
             foreach (var p in array)
@@ -72,6 +79,12 @@ namespace TheGlacier2
 
         private static string SaveState_SaveToString(On.SaveState.orig_SaveToString orig, SaveState saveState)
         {
+            /******************************24_2_16 保存bug**********************************/
+            if (MyOption.Instance.OpCheckBoxSaveIceData_conf.Value == false)
+            {
+                return orig.Invoke(saveState);
+            }
+            //]]
             string RemoveField(string dataText,string fieldName)
             {
                 int index_start = dataText.IndexOf(fieldName);
@@ -193,7 +206,12 @@ namespace TheGlacier2
             orig.Invoke(self, eu);
             if (self.slugcatStats.name != Plugin.YourSlugID)
                 return;
-            LoadMyData();
+            /******************************24_2_16 保存bug**********************************/
+            if (MyOption.Instance.OpCheckBoxSaveIceData_conf.Value)
+            {
+                LoadMyData();
+            }
+            //]]
             //取玩家变量
             GlobalVar.playerVar.TryGetValue(self, out PlayerVar pv);
 #if DEBUG
@@ -204,8 +222,13 @@ namespace TheGlacier2
             SelfExplode(self);
             //飞行能力
             pv.flyAbility.Glacier2_Fly(self);
-            //靠近生物减速
-            SlowDownCreature(self);
+            /******************************24_2_16 保存bug**********************************/
+            if (MyOption.Instance.OpCheckBoxSaveIceData_conf.Value)
+            {
+                //靠近生物减速
+                SlowDownCreature(self);
+            }
+            //]]  
             //冰盾合成
             MyIceShield.IceShieldCraft(self);
             //披风
@@ -600,6 +623,13 @@ namespace TheGlacier2
             try
             {
 #endif
+            /******************************24_2_16 保存bug**********************************/
+            if (MyOption.Instance.OpCheckBoxSaveIceData_conf.Value == false)
+            {
+                orig.Invoke(self, eu);
+                return;
+            }
+            //]]
             //如果在效果列表
             if (GlobalVar.slowdownCreature.TryGetValue(self, out SlowDownAbility counter))
             {

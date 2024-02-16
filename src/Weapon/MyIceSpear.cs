@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System;
 using UnityEngine;
+using TheGlacier;
 
 namespace TheGlacier2
 {
@@ -355,6 +356,13 @@ namespace TheGlacier2
             try
             {
 #endif
+            /******************************24_2_16 保存bug**********************************/
+            if (MyOption.Instance.OpCheckBoxSaveIceData_conf.Value == false)
+            {
+                orig.Invoke(self);
+                return;
+            }
+            //]]
             if (self.realizedObject != null)
                 return;
             if (self is AbstractSpear abstractSpear)

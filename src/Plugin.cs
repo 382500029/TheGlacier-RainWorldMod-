@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TheGlacier2
 {
-    [BepInPlugin(MOD_ID, "The Glacier2", "0.2.1")]
+    [BepInPlugin(MOD_ID, "The Glacier2", "0.2.3")]
     class Plugin : BaseUnityPlugin
     {
         //设置ModID

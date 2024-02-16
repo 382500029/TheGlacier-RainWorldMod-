@@ -825,9 +825,16 @@ namespace TheGlacier2
                 return;
             //取玩家变量
             GlobalVar.playerVar.TryGetValue(self, out PlayerVar pv);
-            //最多两个冰盾
-            if (pv.iceShieldList.Count >= MyIceShield_max)
-                return;
+
+            /******************************24_2_16 设置选项**********************************/
+            if (MyOption.Instance.OpCheckBoxUnlockIceShieldNum_conf.Value == false)
+            {
+                //最多两个冰盾
+                if (pv.iceShieldList.Count >= MyIceShield_max)
+                    return;
+            }
+            //]]
+
             if (self.input[0].x == 0 && //不能左右移动 同时
                 self.input[0].y == 0 && //不能上下移动 同时
                 GlobalVar.IsPressedIceShield(self) &&//按住冰盾合成键

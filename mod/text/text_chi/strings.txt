@@ -14,3 +14,5 @@ I'll give you another instinct which will be the best defense.|我会给你另�
 Just take it and then don't come back and bother me again. |收下吧，然后别再回来打扰我了。
 Unlock IceShield ability|解锁冰盾能力
 Cancel CyanLizard hate|取消青蜥蜴仇恨
+Save Ice data to the next cycle(Save bug not fixed yet)|保存能力数据带到下一次雨眠(保存bug还未修复)
+Unlock the maximum number of ice shields|解除冰盾数量上限
